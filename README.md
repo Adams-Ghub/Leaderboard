@@ -1,5 +1,5 @@
 <div align="center">
-  <h2><b>To do List </b></h2>
+  <h2><b>Leader board </b></h2>
 </div>
 
 # 📗 Table of Contents
@@ -26,7 +26,7 @@
 
 # 📖 Leader board <a name="about-project"></a>
 
-**Leader board** is a personal project where I implement knowledge aquired from ES6, Webpack and api lessons to develop a Leader board web app.
+**Leader board** is a personal project where I implement knowledge acquired from ES6, Webpack and api lessons to develop a Leader board web app.
 
 ## 🛠 Built With <a name="built-with"></a>
 
