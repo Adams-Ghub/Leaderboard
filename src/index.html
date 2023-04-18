@@ -2,11 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Getting Started</title>
+    <title>home</title>
     <script src="https://unpkg.com/lodash@4.17.20"></script>
   </head>
   <body>
-    <h1>Go home to assist mum</h1>
+    <section class="title">
+      <h1>Leaderboard</h1>
+    </section>
+    <section class="body-section">
+      <div class="scoreboard-section">
+        <div class="title-refresh-btn-container">
+          <h2>Recent Scores</h2>
+          <button class="refresh-btn">Refresh</button>
+        </div>
+        <div class="score-board"></div>
+      </div>
+      <div class="add-score-section">
+        <h2>Add your score</h2>
+        <form action="" method="post">
+          <div class="name-input-box">
+            <input type="text" id="name" placeholder="Your name" />
+          </div>
+          <div class="score-input-box">
+            <input type="text" id="score" placeholder="Your scores" />
+          </div>
+
+          <input class="submit-btn" type="submit" value="Submit" />
+        </form>
+      </div>
+    </section>
+
     <script src="./src/index.js"></script>
   </body>
 </html>
