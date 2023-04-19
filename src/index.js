@@ -2,34 +2,23 @@ import _ from 'lodash';
 import './style.css';
 import Games from './operations'
 
-const DATA = [
-    {
-        name: 'Player one',
-        score: '300',
 
-    },
-    {
-        name: 'Player two',
-        score: '300',
-
-    },
-    {
-        name: 'Player three',
-        score: '300',
-
-    },
-    {
-        name: 'Player four',
-        score: '300',
-
-    },
-];
 
 const scoreboard = document.querySelector('.score-board');
-const myGame = new Games()
+const refreshBtn = document.querySelector('.refresh-btn');
+const submitBtn = document.querySelector('.submit-btn')
+const nameInput = document.querySelector('#name');
+const scoreInput = document.querySelector('#score')
 
-const showScore = () => {
-    for (let i = 0; i < DATA.length; i++) {
+
+const myGame = new Games()
+const gameId = myGame.createNew()
+let DATA = myGame.getScores(gameId)
+console.log(gameId)
+
+const showScore = async () => {
+    const info = await DATA
+    for (let i = 0; i < info.length; i++) {
         const boardItem = document.createElement('div');
         const itemName = document.createElement('span');
         const itemScore = document.createElement('span');
@@ -38,16 +27,30 @@ const showScore = () => {
             boardItem.id = 'odd';
         }
         boardItem.classList.add('score-item');
-        itemName.textContent = `${DATA[i].name}: `;
-        itemScore.textContent = DATA[i].score;
+        itemName.textContent = `${info[i].user}: `;
+        itemScore.textContent = info[i].score;
         boardItem.appendChild(itemName);
         boardItem.appendChild(itemScore);
         scoreboard.appendChild(boardItem);
     }
 };
 
+refreshBtn.addEventListener('click', async () => {
+    DATA = myGame.getScores(gameId)
+    scoreboard.innerHTML = ""
+    showScore()
+    console.log("DATA:", DATA)
+})
+
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    let params = { id: gameId, user: nameInput.value, score: scoreInput.value }
+    console.log(params)
+    myGame.addScores(params)
+    nameInput.value = "";
+    scoreInput.value = ""
+})
+
 window.addEventListener('load', () => {
     showScore();
-    myGame.createNew()
-
 });
