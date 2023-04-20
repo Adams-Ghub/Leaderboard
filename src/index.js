@@ -9,8 +9,7 @@ const nameInput = document.querySelector('#name');
 const scoreInput = document.querySelector('#score');
 
 const myGame = new Games();
-const gameId = myGame.createNew();
-let DATA = myGame.getScores(gameId);
+let DATA = myGame.getScores();
 
 const showScore = async () => {
   const info = await DATA;
@@ -32,14 +31,14 @@ const showScore = async () => {
 };
 
 refreshBtn.addEventListener('click', async () => {
-  DATA = myGame.getScores(gameId);
+  DATA = myGame.getScores();
   scoreboard.innerHTML = '';
   showScore();
 });
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  const params = { id: gameId, user: nameInput.value, score: scoreInput.value };
+  const params = { user: nameInput.value, score: scoreInput.value };
   myGame.addScores(params);
   nameInput.value = '';
   scoreInput.value = '';
